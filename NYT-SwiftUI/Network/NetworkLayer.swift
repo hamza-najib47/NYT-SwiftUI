@@ -41,4 +41,22 @@ class NetworkLayer {
             }
         }
     }
+    
+    static func getSports(completionHandler completion: @escaping ([News]?, Bool) -> Void) {
+        getData(Constants.NewsTypesForURL.sports) {
+            newsList, isAlldataLoaded in
+            DispatchQueue.main.async {
+                completion(newsList, isAlldataLoaded)
+            }
+        }
+    }
+    
+    static func getScience(completionHandler completion: @escaping ([News]?, Bool) -> Void) {
+        getData(Constants.NewsTypesForURL.science) {
+            newsList, isAlldataLoaded in
+            DispatchQueue.main.async {
+                completion(newsList, isAlldataLoaded)
+            }
+        }
+    }
 }

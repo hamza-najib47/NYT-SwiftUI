@@ -18,6 +18,7 @@ struct NewsArticleTableCell: View {
         let bylineLbl = Text(newsArticle.byline ?? Constants.articleReplacements.byline)
             .foregroundColor(.gray)
             .font(.system(size: 15))
+            .lineLimit(1)
         let isFavouriteImg = Image(systemName: Constants.LogoImages.favourites)
             .foregroundColor(.yellow)
         

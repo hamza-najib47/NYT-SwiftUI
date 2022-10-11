@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct SportsView: View {
+    @ObservedObject var sportsViewModel: SportsViewModel = SportsViewModel()
+    
     var body: some View {
-        Text("Sports")
+        
+        List(sportsViewModel.newsList, id: \.title) {
+            article in
+            NewsArticleTableCell(newsArticle: article)
+        }
+        .refreshable { }
     }
 }
 
