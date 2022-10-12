@@ -58,5 +58,8 @@ enum Constants {
     enum articleReplacements {
         static let abstract = "No Abstract"
         static let byline = "By: Unknown"
+        static let checkout = "Please check more out at: "
+        static let url = "No URL Given"
+        static let title = "No Title"
     }
 }

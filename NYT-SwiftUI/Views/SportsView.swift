@@ -11,12 +11,18 @@ struct SportsView: View {
     @ObservedObject var sportsViewModel: SportsViewModel = SportsViewModel()
     
     var body: some View {
-        
-        List(sportsViewModel.newsList, id: \.title) {
-            article in
-            NewsArticleTableCell(newsArticle: article)
+        NavigationView {
+            List(sportsViewModel.newsList, id: \.title) {
+                article in
+                NavigationLink {
+                    DetailedView(newsArticle: article)
+                } label: {
+                    NewsArticleTableCell(newsArticle: article)
+                }
+            }
+            .refreshable { }
+            .listStyle(.plain)
         }
-        .refreshable { }
     }
 }
 

@@ -11,12 +11,18 @@ struct ScienceView: View {
     @ObservedObject var scienceViewModel: ScienceViewModel = ScienceViewModel()
     
     var body: some View {
-        
-        List(scienceViewModel.newsList, id: \.title) {
-            article in
-            NewsArticleTableCell(newsArticle: article)
+        NavigationView {
+            List(scienceViewModel.newsList, id: \.title) {
+                article in
+                NavigationLink {
+                    DetailedView(newsArticle: article)
+                } label: {
+                    NewsArticleTableCell(newsArticle: article)
+                }
+            }
+            .refreshable { }
+            .listStyle(.plain)
         }
-        .refreshable { }
     }
 }
 
