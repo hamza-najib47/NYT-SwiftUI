@@ -10,6 +10,7 @@ import SwiftUI
 struct NewsArticleTableCell: View {
     
     var newsArticle: News
+    @State private var isFavouritePressed = false
     
     var body: some View {
 
@@ -19,8 +20,21 @@ struct NewsArticleTableCell: View {
             .foregroundColor(.gray)
             .font(.system(size: 15))
             .lineLimit(1)
-        let isFavouriteImg = Image(systemName: Constants.LogoImages.favourites)
-            .foregroundColor(.yellow)
+        let isFavouriteBtn =
+        Button(action: {
+            isFavouritePressed = !isFavouritePressed
+        }, label: {
+            if isFavouritePressed {
+                Image(systemName: Constants.LogoImages.isFavourite)
+                    .foregroundColor(.yellow)
+            }
+            else {
+                Image(systemName: Constants.LogoImages.notFavourite)
+                    .foregroundColor(.yellow)
+            }
+        })
+        .buttonStyle(.plain)
+        
         
         HStack {
             if let multimedia = newsArticle.multimedia,
@@ -39,7 +53,7 @@ struct NewsArticleTableCell: View {
                 HStack {
                     bylineLbl
                     Spacer()
-                    isFavouriteImg
+                    isFavouriteBtn
                 }
             }
         }

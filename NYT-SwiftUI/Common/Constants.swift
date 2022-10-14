@@ -48,7 +48,8 @@ enum Constants {
         static let home = "homekit"
         static let sports = "sportscourt"
         static let science = "newspaper"
-        static let favourites = "star"
+        static let notFavourite = "star"
+        static let isFavourite = "star.fill"
     }
     
     enum Errors {

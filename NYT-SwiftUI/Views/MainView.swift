@@ -24,7 +24,7 @@ struct MainView: View {
                 }
             FavouritesView()
                 .tabItem {
-                    Label(Constants.NewsTypes.favourites, systemImage: Constants.LogoImages.favourites)
+                    Label(Constants.NewsTypes.favourites, systemImage: Constants.LogoImages.notFavourite)
                 }
         }
     }
