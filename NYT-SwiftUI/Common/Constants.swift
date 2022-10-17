@@ -13,7 +13,7 @@ enum Constants {
         static let initialUrl = "https://api.nytimes.com/svc/topstories/v2/"
         static let urlInterval = ".json?api-key="
         static let checkOutURLText = "Click here to find out more about this article."
-        static let firebaseURL = "https://nyt-app-b10d4-default-rtdb.asia-southeast1.firebasedatabase.app/"
+        static let firebaseURL = "https://nyt-swiftui-default-rtdb.asia-southeast1.firebasedatabase.app/"
     }
     
     enum Keys {

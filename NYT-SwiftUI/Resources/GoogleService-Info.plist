@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1014321027771-9j2d8m1e0p127l0p1ul2r52b5133ue73.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1014321027771-9j2d8m1e0p127l0p1ul2r52b5133ue73</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB9YVHfM9JnQZ9gjlTU1zxLN-Rsjk-qm8k</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1014321027771</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Hamza-Najib.NYT-SwiftUI</string>
+	<key>PROJECT_ID</key>
+	<string>nyt-swiftui</string>
+	<key>STORAGE_BUCKET</key>
+	<string>nyt-swiftui.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1014321027771:ios:f609c9b4d6a8095c61a79e</string>
+</dict>
+</plist>

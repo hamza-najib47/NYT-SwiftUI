@@ -18,7 +18,7 @@ struct HomeView: View {
                 NavigationLink {
                     DetailedView(newsArticle: article)
                 } label: {
-                    NewsArticleTableCell(newsArticle: article)
+                    NewsArticleTableCell(newsArticle: article, delegate: homeViewModel)
                 }
             }
             .refreshable { }

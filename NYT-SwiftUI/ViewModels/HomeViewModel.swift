@@ -41,3 +41,18 @@ extension HomeViewModel {
         }
     }
 }
+
+//MARK: - Favourites Delegate
+
+extension HomeViewModel: FavouritesCellDelegate {
+    func favActionBtn(_ article: News, _ isFavourite: Bool) {
+        if isFavourite {
+            var newsArticle = article
+            newsArticle.isFavourite = true
+            NetworkLayer.insertIntoDatabase(newsArticle)
+        }
+        else {
+            NetworkLayer.removeFromDatabase(article)
+        }
+    }
+}

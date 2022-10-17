@@ -17,7 +17,7 @@ struct SportsView: View {
                 NavigationLink {
                     DetailedView(newsArticle: article)
                 } label: {
-                    NewsArticleTableCell(newsArticle: article)
+                    NewsArticleTableCell(newsArticle: article, delegate: sportsViewModel)
                 }
             }
             .refreshable { }

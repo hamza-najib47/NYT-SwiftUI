@@ -8,8 +8,26 @@
 import SwiftUI
 
 struct FavouritesView: View {
+    @ObservedObject var favouritesViewModel: FavouritesViewModel = FavouritesViewModel()
+    
     var body: some View {
-        Text("Favourites")
+        NavigationView {
+            List(favouritesViewModel.newsList, id: \.title) {
+                article in
+                NavigationLink {
+                    DetailedView(newsArticle: article)
+                } label: {
+                    NewsArticleTableCell(newsArticle: article, delegate: favouritesViewModel)
+                }
+            }
+            .refreshable {
+                favouritesViewModel.getData()
+            }
+            .listStyle(.plain)
+        }
+        .onAppear {
+            favouritesViewModel.getData()
+        }
     }
 }
 

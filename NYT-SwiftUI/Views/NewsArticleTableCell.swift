@@ -11,6 +11,7 @@ struct NewsArticleTableCell: View {
     
     var newsArticle: News
     @State private var isFavouritePressed = false
+    weak var delegate: FavouritesCellDelegate?
     
     var body: some View {
 
@@ -23,6 +24,12 @@ struct NewsArticleTableCell: View {
         let isFavouriteBtn =
         Button(action: {
             isFavouritePressed = !isFavouritePressed
+            if isFavouritePressed {
+                delegate?.favActionBtn(newsArticle, true)
+            }
+            else {
+                delegate?.favActionBtn(newsArticle, false)
+            }
         }, label: {
             if isFavouritePressed {
                 Image(systemName: Constants.LogoImages.isFavourite)
