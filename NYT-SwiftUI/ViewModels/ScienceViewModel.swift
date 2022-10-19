@@ -35,8 +35,23 @@ extension ScienceViewModel {
         NetworkLayer.getScience() {
             results, isAllDataLoaded in
             self.isAllDataLoaded = isAllDataLoaded
-            if let results = results {
-                self.newsList = results
+            if var results = results {
+                for index in results.indices {
+                    results[index].isFavourite = false
+                }
+                FavouritesViewModel.provideFavouritesData {
+                    favouriteArticles in
+                    if let newsArticles = favouriteArticles {
+                        for article in newsArticles {
+                            for index in results.indices {
+                                if article == results[index] {
+                                    results[index].isFavourite = true
+                                }
+                            }
+                        }
+                    }
+                    self.newsList = results
+                }
             }
         }
     }

@@ -17,7 +17,7 @@ struct FavouritesView: View {
                 NavigationLink {
                     DetailedView(newsArticle: article)
                 } label: {
-                    NewsArticleTableCell(newsArticle: article, delegate: favouritesViewModel)
+                    NewsArticleTableCell(newsArticle: article, isFavouritePressed: true, delegate: favouritesViewModel)
                 }
             }
             .refreshable {

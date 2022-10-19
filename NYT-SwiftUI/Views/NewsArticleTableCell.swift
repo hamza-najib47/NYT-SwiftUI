@@ -10,7 +10,7 @@ import SwiftUI
 struct NewsArticleTableCell: View {
     
     var newsArticle: News
-    @State private var isFavouritePressed = false
+    @State var isFavouritePressed: Bool
     weak var delegate: FavouritesCellDelegate?
     
     var body: some View {
@@ -70,6 +70,6 @@ struct NewsArticleTableCell: View {
 
 struct NewsArticleTableCell_Previews: PreviewProvider {
     static var previews: some View {
-        NewsArticleTableCell(newsArticle: News())
+        NewsArticleTableCell(newsArticle: News(), isFavouritePressed: false)
     }
 }

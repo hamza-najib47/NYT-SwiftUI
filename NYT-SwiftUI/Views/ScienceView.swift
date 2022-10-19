@@ -17,7 +17,7 @@ struct ScienceView: View {
                 NavigationLink {
                     DetailedView(newsArticle: article)
                 } label: {
-                    NewsArticleTableCell(newsArticle: article, delegate: scienceViewModel)
+                    NewsArticleTableCell(newsArticle: article, isFavouritePressed: article.isFavourite ?? false, delegate: scienceViewModel)
                 }
             }
             .refreshable { }

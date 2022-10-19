@@ -36,6 +36,9 @@ extension FavouritesViewModel: FavouritesCellDelegate {
             newsArticles, isDataLoaded in
             self.isAllDataLoaded = isDataLoaded
             if let newsArticles = newsArticles {
+                for var article in newsArticles {
+                    article.isFavourite = true
+                }
                 self.newsList = newsArticles
             }
         }
@@ -44,6 +47,18 @@ extension FavouritesViewModel: FavouritesCellDelegate {
     func favActionBtn(_ article: News, _ isFavourite: Bool) {
         if !isFavourite {
             NetworkLayer.removeFromDatabase(article)
+        }
+    }
+    
+    static func provideFavouritesData(completionHandler completion: @escaping ([News]?) -> Void) {
+        NetworkLayer.getAllDataFromDatabase {
+            newsArticles, _ in
+            if let newsArticles = newsArticles {
+                for var article in newsArticles {
+                    article.isFavourite = true
+                }
+                completion(newsArticles)
+            }
         }
     }
 }
