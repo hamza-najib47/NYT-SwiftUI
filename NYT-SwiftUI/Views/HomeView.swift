@@ -21,6 +21,8 @@ struct HomeView: View {
                     NewsArticleTableCell(newsArticle: article, isFavouritePressed: article.isFavourite ?? false, delegate: homeViewModel)
                 }
             }
+            .navigationTitle("Home")
+            .navigationViewStyle(.stack)
             .refreshable { }
             .listStyle(.plain)
         }

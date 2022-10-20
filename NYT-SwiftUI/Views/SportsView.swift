@@ -20,6 +20,8 @@ struct SportsView: View {
                     NewsArticleTableCell(newsArticle: article, isFavouritePressed: article.isFavourite ?? false, delegate: sportsViewModel)
                 }
             }
+            .navigationTitle("Sports")
+            .navigationViewStyle(.stack)
             .refreshable { }
             .listStyle(.plain)
         }

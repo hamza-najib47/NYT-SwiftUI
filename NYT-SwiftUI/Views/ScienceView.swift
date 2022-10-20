@@ -20,6 +20,8 @@ struct ScienceView: View {
                     NewsArticleTableCell(newsArticle: article, isFavouritePressed: article.isFavourite ?? false, delegate: scienceViewModel)
                 }
             }
+            .navigationTitle("Science")
+            .navigationViewStyle(.stack)
             .refreshable { }
             .listStyle(.plain)
         }

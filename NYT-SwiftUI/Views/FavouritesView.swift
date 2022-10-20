@@ -20,6 +20,8 @@ struct FavouritesView: View {
                     NewsArticleTableCell(newsArticle: article, isFavouritePressed: true, delegate: favouritesViewModel)
                 }
             }
+            .navigationTitle("Favourites")
+            .navigationViewStyle(.stack)
             .refreshable {
                 favouritesViewModel.getData()
             }
