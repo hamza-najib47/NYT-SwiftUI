@@ -11,7 +11,7 @@ struct NewsArr: Codable {
     var results: [News]?
 }
 
-struct News: Codable {
+struct News: Codable, Equatable {
     
     var abstract: String?
     var byline: String?

@@ -18,7 +18,7 @@ class ScienceViewModel: ObservableObject {
         fetchData()
     }
     
-    //MARK: - GETTERS
+//MARK: - GETTERS
     func getNewsListCount() -> Int {
         return newsList.count
     }
@@ -29,7 +29,6 @@ class ScienceViewModel: ObservableObject {
 }
 
 //MARK: - API CALL
-
 extension ScienceViewModel {
     func fetchData() {
         NetworkLayer.getScience() {
@@ -43,10 +42,8 @@ extension ScienceViewModel {
                     favouriteArticles in
                     if let newsArticles = favouriteArticles {
                         for article in newsArticles {
-                            for index in results.indices {
-                                if article == results[index] {
-                                    results[index].isFavourite = true
-                                }
+                            if let index = results.firstIndex(of: article) {
+                                results[index].isFavourite = true
                             }
                         }
                     }
@@ -58,7 +55,6 @@ extension ScienceViewModel {
 }
 
 //MARK: - Favourites Delegate
-
 extension ScienceViewModel: FavouritesCellDelegate {
     func favActionBtn(_ article: News, _ isFavourite: Bool) {
         if isFavourite {

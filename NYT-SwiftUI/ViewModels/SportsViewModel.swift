@@ -18,7 +18,7 @@ class SportsViewModel: ObservableObject {
         fetchData()
     }
     
-    //MARK: - GETTERS
+//MARK: - GETTERS
     func getNewsListCount() -> Int {
         return newsList.count
     }
@@ -29,7 +29,6 @@ class SportsViewModel: ObservableObject {
 }
 
 //MARK: - API CALL
-
 extension SportsViewModel {
     func fetchData() {
         NetworkLayer.getSports() {
@@ -43,10 +42,8 @@ extension SportsViewModel {
                     favouriteArticles in
                     if let newsArticles = favouriteArticles {
                         for article in newsArticles {
-                            for index in results.indices {
-                                if article == results[index] {
-                                    results[index].isFavourite = true
-                                }
+                            if let index = results.firstIndex(of: article) {
+                                results[index].isFavourite = true
                             }
                         }
                     }
@@ -58,7 +55,6 @@ extension SportsViewModel {
 }
 
 //MARK: - Favourites Delegate
-
 extension SportsViewModel: FavouritesCellDelegate {
     func favActionBtn(_ article: News, _ isFavourite: Bool) {
         if isFavourite {

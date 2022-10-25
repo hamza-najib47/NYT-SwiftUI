@@ -18,7 +18,7 @@ class HomeViewModel: ObservableObject {
         fetchData()
     }
     
-    //MARK: - GETTERS
+//MARK: - GETTERS
     func getNewsListCount() -> Int {
         return newsList.count
     }
@@ -29,7 +29,6 @@ class HomeViewModel: ObservableObject {
 }
 
 //MARK: - API CALL
-
 extension HomeViewModel {
     func fetchData() {
         NetworkLayer.getHome() {
@@ -43,10 +42,8 @@ extension HomeViewModel {
                     favouriteArticles in
                     if let newsArticles = favouriteArticles {
                         for article in newsArticles {
-                            for index in results.indices {
-                                if article == results[index] {
-                                    results[index].isFavourite = true
-                                }
+                            if let index = results.firstIndex(of: article) {
+                                results[index].isFavourite = true
                             }
                         }
                     }
@@ -58,7 +55,6 @@ extension HomeViewModel {
 }
 
 //MARK: - Favourites Delegate
-
 extension HomeViewModel: FavouritesCellDelegate {
     func favActionBtn(_ article: News, _ isFavourite: Bool) {
         if isFavourite {

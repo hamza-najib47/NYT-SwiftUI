@@ -35,7 +35,8 @@ extension FavouritesViewModel: FavouritesCellDelegate {
         NetworkLayer.getAllDataFromDatabase {
             newsArticles, isDataLoaded in
             self.isAllDataLoaded = isDataLoaded
-            if let newsArticles = newsArticles {
+            if var newsArticles = newsArticles {
+                newsArticles.sort(by: {$0.created_date! > $1.created_date!})
                 for var article in newsArticles {
                     article.isFavourite = true
                 }
