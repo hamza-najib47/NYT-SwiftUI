@@ -35,6 +35,10 @@ extension FavouritesViewModel: FavouritesCellDelegate {
         NetworkLayer.getAllDataFromDatabase {
             newsArticles, isDataLoaded in
             self.isAllDataLoaded = isDataLoaded
+            if(isDataLoaded == false) {
+                self.newsList = []
+                return
+            }
             if var newsArticles = newsArticles {
                 newsArticles.sort(by: {$0.created_date! > $1.created_date!})
                 for var article in newsArticles {
@@ -53,7 +57,11 @@ extension FavouritesViewModel: FavouritesCellDelegate {
     
     static func provideFavouritesData(completionHandler completion: @escaping ([News]?) -> Void) {
         NetworkLayer.getAllDataFromDatabase {
-            newsArticles, _ in
+            newsArticles, isDataLoaded in
+            if isDataLoaded == false {
+                completion(nil)
+                return
+            }
             if let newsArticles = newsArticles {
                 for var article in newsArticles {
                     article.isFavourite = true

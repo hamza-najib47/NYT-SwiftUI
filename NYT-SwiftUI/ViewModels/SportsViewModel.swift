@@ -35,8 +35,15 @@ extension SportsViewModel {
             results, isAllDataLoaded in
             self.isAllDataLoaded = isAllDataLoaded
             if var results = results {
+                var checker: Int? = nil
                 for index in results.indices {
                     results[index].isFavourite = false
+                    if results[index].abstract == Constants.Keys.empty {
+                        checker = index
+                    }
+                }
+                if let checker = checker {
+                    results.remove(at: checker)
                 }
                 FavouritesViewModel.provideFavouritesData {
                     favouriteArticles in

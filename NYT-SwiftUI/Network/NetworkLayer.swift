@@ -82,7 +82,9 @@ extension NetworkLayer {
                     }
                 }
                 completion(newsList, true)
+                return
             }
+            completion(nil, false)
         }
     }
     

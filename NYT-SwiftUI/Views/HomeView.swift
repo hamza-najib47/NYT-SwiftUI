@@ -23,8 +23,13 @@ struct HomeView: View {
             }
             .navigationTitle("Home")
             .navigationViewStyle(.stack)
-            .refreshable { }
+            .refreshable {
+                homeViewModel.fetchData()
+            }
             .listStyle(.plain)
+        }
+        .onAppear {
+            homeViewModel.fetchData()
         }
     }
 }

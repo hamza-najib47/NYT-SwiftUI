@@ -22,8 +22,11 @@ struct ScienceView: View {
             }
             .navigationTitle("Science")
             .navigationViewStyle(.stack)
-            .refreshable { }
+            .refreshable { scienceViewModel.fetchData() }
             .listStyle(.plain)
+        }
+        .onAppear {
+            scienceViewModel.fetchData()
         }
     }
 }

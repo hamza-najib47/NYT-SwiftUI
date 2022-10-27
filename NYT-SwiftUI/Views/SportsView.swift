@@ -22,8 +22,12 @@ struct SportsView: View {
             }
             .navigationTitle("Sports")
             .navigationViewStyle(.stack)
-            .refreshable { }
+            .refreshable { sportsViewModel.fetchData()
+            }
             .listStyle(.plain)
+        }
+        .onAppear() {
+            sportsViewModel.fetchData()
         }
     }
 }

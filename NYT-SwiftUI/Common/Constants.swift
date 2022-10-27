@@ -29,6 +29,7 @@ enum Constants {
         static let results = "results"
         static let isFav = "isFavourite"
         static let refresh = "Pull to refresh"
+        static let empty = ""
     }
     
     enum NewsTypesForURL {
