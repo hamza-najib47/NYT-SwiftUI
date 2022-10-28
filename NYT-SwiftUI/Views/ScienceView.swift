@@ -8,8 +8,26 @@
 import SwiftUI
 
 struct ScienceView: View {
+    @ObservedObject var scienceViewModel: ScienceViewModel = ScienceViewModel()
+    
     var body: some View {
-        Text("Science")
+        NavigationView {
+            List(scienceViewModel.newsList, id: \.title) {
+                article in
+                NavigationLink {
+                    DetailedView(newsArticle: article)
+                } label: {
+                    NewsArticleTableCell(newsArticle: article, isFavouritePressed: article.isFavourite ?? false, delegate: scienceViewModel)
+                }
+            }
+            .navigationTitle("Science")
+            .navigationViewStyle(.stack)
+            .refreshable { scienceViewModel.fetchData() }
+            .listStyle(.plain)
+        }
+        .onAppear {
+            scienceViewModel.fetchData()
+        }
     }
 }
 

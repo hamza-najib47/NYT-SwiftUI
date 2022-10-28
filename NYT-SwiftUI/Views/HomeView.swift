@@ -12,12 +12,25 @@ struct HomeView: View {
     @ObservedObject var homeViewModel: HomeViewModel = HomeViewModel()
     
     var body: some View {
-        
-        List(homeViewModel.newsList, id: \.title) {
-            article in
-            NewsArticleTableCell(newsArticle: article)
+        NavigationView {
+            List(homeViewModel.newsList, id: \.title) {
+                article in
+                NavigationLink {
+                    DetailedView(newsArticle: article)
+                } label: {
+                    NewsArticleTableCell(newsArticle: article, isFavouritePressed: article.isFavourite ?? false, delegate: homeViewModel)
+                }
+            }
+            .navigationTitle("Home")
+            .navigationViewStyle(.stack)
+            .refreshable {
+                homeViewModel.fetchData()
+            }
+            .listStyle(.plain)
         }
-        .refreshable { }
+        .onAppear {
+            homeViewModel.fetchData()
+        }
     }
 }
 

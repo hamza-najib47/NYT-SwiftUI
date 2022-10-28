@@ -13,7 +13,7 @@ enum Constants {
         static let initialUrl = "https://api.nytimes.com/svc/topstories/v2/"
         static let urlInterval = ".json?api-key="
         static let checkOutURLText = "Click here to find out more about this article."
-        static let firebaseURL = "https://nyt-app-b10d4-default-rtdb.asia-southeast1.firebasedatabase.app/"
+        static let firebaseURL = "https://nyt-swiftui-default-rtdb.asia-southeast1.firebasedatabase.app/"
     }
     
     enum Keys {
@@ -29,6 +29,7 @@ enum Constants {
         static let results = "results"
         static let isFav = "isFavourite"
         static let refresh = "Pull to refresh"
+        static let empty = ""
     }
     
     enum NewsTypesForURL {
@@ -48,7 +49,8 @@ enum Constants {
         static let home = "homekit"
         static let sports = "sportscourt"
         static let science = "newspaper"
-        static let favourites = "star"
+        static let notFavourite = "star"
+        static let isFavourite = "star.fill"
     }
     
     enum Errors {
@@ -58,5 +60,8 @@ enum Constants {
     enum articleReplacements {
         static let abstract = "No Abstract"
         static let byline = "By: Unknown"
+        static let checkout = "Please check more out at: "
+        static let url = "No URL Given"
+        static let title = "No Title"
     }
 }

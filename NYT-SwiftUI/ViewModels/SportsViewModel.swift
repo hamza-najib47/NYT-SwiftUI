@@ -1,13 +1,13 @@
 //
-//  HomeViewModel.swift
+//  SportsViewModel.swift
 //  NYT-SwiftUI
 //
-//  Created by Hamza Najib on 05/10/2022.
+//  Created by Hamza Najib on 11/10/2022.
 //
 
 import Foundation
 
-class HomeViewModel: ObservableObject {
+class SportsViewModel: ObservableObject {
     
     @Published var newsList: [News] = []
     
@@ -29,9 +29,9 @@ class HomeViewModel: ObservableObject {
 }
 
 //MARK: - API CALL
-extension HomeViewModel {
+extension SportsViewModel {
     func fetchData() {
-        NetworkLayer.getHome() {
+        NetworkLayer.getSports() {
             results, isAllDataLoaded in
             self.isAllDataLoaded = isAllDataLoaded
             if var results = results {
@@ -62,7 +62,7 @@ extension HomeViewModel {
 }
 
 //MARK: - Favourites Delegate
-extension HomeViewModel: FavouritesCellDelegate {
+extension SportsViewModel: FavouritesCellDelegate {
     func favActionBtn(_ article: News, _ isFavourite: Bool) {
         if isFavourite {
             var newsArticle = article

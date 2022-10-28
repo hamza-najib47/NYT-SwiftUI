@@ -10,6 +10,8 @@ import SwiftUI
 struct NewsArticleTableCell: View {
     
     var newsArticle: News
+    @State var isFavouritePressed: Bool
+    weak var delegate: FavouritesCellDelegate?
     
     var body: some View {
 
@@ -18,8 +20,28 @@ struct NewsArticleTableCell: View {
         let bylineLbl = Text(newsArticle.byline ?? Constants.articleReplacements.byline)
             .foregroundColor(.gray)
             .font(.system(size: 15))
-        let isFavouriteImg = Image(systemName: Constants.LogoImages.favourites)
-            .foregroundColor(.yellow)
+            .lineLimit(1)
+        let isFavouriteBtn =
+        Button(action: {
+            isFavouritePressed = !isFavouritePressed
+            if isFavouritePressed {
+                delegate?.favActionBtn(newsArticle, true)
+            }
+            else {
+                delegate?.favActionBtn(newsArticle, false)
+            }
+        }, label: {
+            if isFavouritePressed {
+                Image(systemName: Constants.LogoImages.isFavourite)
+                    .foregroundColor(.yellow)
+            }
+            else {
+                Image(systemName: Constants.LogoImages.notFavourite)
+                    .foregroundColor(.yellow)
+            }
+        })
+        .buttonStyle(.plain)
+        
         
         HStack {
             if let multimedia = newsArticle.multimedia,
@@ -38,7 +60,7 @@ struct NewsArticleTableCell: View {
                 HStack {
                     bylineLbl
                     Spacer()
-                    isFavouriteImg
+                    isFavouriteBtn
                 }
             }
         }
@@ -48,6 +70,6 @@ struct NewsArticleTableCell: View {
 
 struct NewsArticleTableCell_Previews: PreviewProvider {
     static var previews: some View {
-        NewsArticleTableCell(newsArticle: News())
+        NewsArticleTableCell(newsArticle: News(), isFavouritePressed: false)
     }
 }

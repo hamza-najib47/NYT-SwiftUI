@@ -8,8 +8,27 @@
 import SwiftUI
 
 struct SportsView: View {
+    @ObservedObject var sportsViewModel: SportsViewModel = SportsViewModel()
+    
     var body: some View {
-        Text("Sports")
+        NavigationView {
+            List(sportsViewModel.newsList, id: \.title) {
+                article in
+                NavigationLink {
+                    DetailedView(newsArticle: article)
+                } label: {
+                    NewsArticleTableCell(newsArticle: article, isFavouritePressed: article.isFavourite ?? false, delegate: sportsViewModel)
+                }
+            }
+            .navigationTitle("Sports")
+            .navigationViewStyle(.stack)
+            .refreshable { sportsViewModel.fetchData()
+            }
+            .listStyle(.plain)
+        }
+        .onAppear() {
+            sportsViewModel.fetchData()
+        }
     }
 }
 
